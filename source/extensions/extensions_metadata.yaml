@@ -227,6 +227,13 @@ envoy.filters.http.compressor:
   status: stable
   type_urls:
   - envoy.extensions.filters.http.compressor.v3.Compressor
+envoy.filters.http.connect_web:
+  categories:
+    - envoy.filters.http
+  security_posture: robust_to_untrusted_downstream
+  status: stable
+  type_urls:
+    - envoy.extensions.filters.http.connect_web.v3.ConnectWeb
 envoy.filters.http.cors:
   categories:
   - envoy.filters.http

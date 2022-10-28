@@ -21,6 +21,7 @@ load(
     _envoy_select_admin_html = "envoy_select_admin_html",
     _envoy_select_admin_no_html = "envoy_select_admin_no_html",
     _envoy_select_boringssl = "envoy_select_boringssl",
+    _envoy_select_buf_connect = "envoy_select_buf_connect",
     _envoy_select_enable_http3 = "envoy_select_enable_http3",
     _envoy_select_google_grpc = "envoy_select_google_grpc",
     _envoy_select_hot_restart = "envoy_select_hot_restart",
@@ -202,6 +203,10 @@ def envoy_proto_descriptor(name, out, srcs = [], external_deps = []):
 def envoy_google_grpc_external_deps():
     return envoy_select_google_grpc([envoy_external_dep_path("grpc")])
 
+# Dependencies on Google grpc should be wrapped with this function.
+def envoy_buf_connect_external_deps():
+    return envoy_select_buf_connect([envoy_external_dep_path("grpc")])
+
 # Here we create wrappers for each of the public targets within the separate bazel
 # files loaded above. This maintains envoy_build_system.bzl as the preferred import
 # for BUILD files that need these build macros. Do not use the imports directly
@@ -212,6 +217,7 @@ envoy_select_admin_html = _envoy_select_admin_html
 envoy_select_admin_no_html = _envoy_select_admin_no_html
 envoy_select_boringssl = _envoy_select_boringssl
 envoy_select_google_grpc = _envoy_select_google_grpc
+envoy_select_buf_connect = _envoy_select_buf_connect
 envoy_select_enable_http3 = _envoy_select_enable_http3
 envoy_select_hot_restart = _envoy_select_hot_restart
 envoy_select_wasm_cpp_tests = _envoy_select_wasm_cpp_tests

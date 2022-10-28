@@ -25,6 +25,13 @@ def envoy_select_google_grpc(xs, repository = ""):
         "//conditions:default": xs,
     })
 
+# Selects the given values if Buf connect is enabled in the current build.
+def envoy_select_buf_connect(xs, repository = ""):
+    return select({
+        repository + "//bazel:disable_buf_connect": [],
+        "//conditions:default": xs,
+    })
+
 # Selects the given values if admin HTML is enabled in the current build.
 def envoy_select_admin_html(xs, repository = ""):
     return select({

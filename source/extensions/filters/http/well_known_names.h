@@ -22,6 +22,8 @@ public:
   const std::string CdnLoop = "envoy.filters.http.cdn_loop";
   // Compressor filter
   const std::string Compressor = "envoy.filters.http.compressor";
+  // Connect web filter
+  const std::string ConnectWeb = "envoy.filters.http.connect_web";
   // CORS filter
   const std::string Cors = "envoy.filters.http.cors";
   // Composite filter
